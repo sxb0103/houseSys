@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.HouseInfoDao">
+    <select id="findAllByIdCard" parameterType="map" resultType="houseInfo">
+        SELECT id,projectName,owner,idCard,hoseType,area,creatTIme
+        from houseinfo
+        <where>
+            <if test="idCard != null and idCard !='' ">
+                idCard=#{idCard}
+            </if>
+        </where>
+    </select>
+
+    <select id="findAllByOwner" parameterType="map" resultType="houseInfo">
+        SELECT id,projectName,owner,idCard,hoseType,area,creatTIme
+        from houseinfo
+        <where>
+            <if test="owner != null and owner !='' ">
+                owner=#{owner}
+            </if>
+        </where>
+    </select>
+
+    <select id="findAll" resultType="houseInfo">
+        SELECT id,projectName,owner,idCard,hoseType,area,creatTIme
+        from houseinfo
+    </select>
+</mapper>
